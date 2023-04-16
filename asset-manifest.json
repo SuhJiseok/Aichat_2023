@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Aichat_2023/static/css/main.b549122c.css",
+    "main.js": "/Aichat_2023/static/js/main.465110a0.js",
+    "static/js/787.348c94bc.chunk.js": "/Aichat_2023/static/js/787.348c94bc.chunk.js",
+    "static/media/loginvd.gif": "/Aichat_2023/static/media/loginvd.a2d38c12d97fb6511f49.gif",
+    "static/media/kakaofriends.png": "/Aichat_2023/static/media/kakaofriends.84375bb9f89d79ccd760.png",
+    "static/media/path.png": "/Aichat_2023/static/media/path.7d00edf73f07bdcecc6d.png",
+    "static/media/kakaostory.png": "/Aichat_2023/static/media/kakaostory.572f3ce5bf10fbdaac9d.png",
+    "static/media/bg_default.png": "/Aichat_2023/static/media/bg_default.82687b4e75ad8b89fa96.png",
+    "index.html": "/Aichat_2023/index.html",
+    "main.b549122c.css.map": "/Aichat_2023/static/css/main.b549122c.css.map",
+    "main.465110a0.js.map": "/Aichat_2023/static/js/main.465110a0.js.map",
+    "787.348c94bc.chunk.js.map": "/Aichat_2023/static/js/787.348c94bc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b549122c.css",
+    "static/js/main.465110a0.js"
+  ]
+}
