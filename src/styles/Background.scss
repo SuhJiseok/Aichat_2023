@@ -1,0 +1,71 @@
+.bgsection{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f1f4f9,#dff1ff);
+  z-index: -1;
+  position: fixed;
+}
+section .color
+{
+  position: absolute;
+  filter: blur(150px);
+}
+
+@keyframes scale {
+  0%, 100% {
+    width: 600px;
+    height: 600px;
+  }
+  50% {
+    width: 800px;
+    height: 800px;
+  }
+}
+
+section .color:nth-child(1){
+  top: -350px;
+  width: 600px;
+  height: 600px;
+  background: #ff359b;
+  animation: scale 5s infinite;
+
+}
+
+@keyframes scale2 {
+  0%, 100% {
+    width: 500px;
+    height: 500px;
+  }
+  50% {
+    width: 600px;
+    height: 600px;
+  }
+}
+section .color:nth-child(2){
+  bottom: -150px;
+  left: 100px;
+  width: 500px;
+  height: 500px;
+  background: #fffd87;
+  animation: scale2 3s infinite;
+}
+@keyframes scale3 {
+  0%, 100% {
+    width: 300px;
+    height: 300px;
+  }
+  50% {
+    width: 400px;
+    height: 400px;
+  }
+}
+section .color:nth-child(3){
+  bottom: 50px;
+  left: 100px;
+  width: 300px;
+  height: 300px;
+  background: #00d2ff;
+  animation: scale3 6s infinite;
+}

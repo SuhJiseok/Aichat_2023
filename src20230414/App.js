@@ -12,7 +12,6 @@ import AppLogin from 'Login';
 import { authService } from "fbase";
 import { onAuthStateChanged } from "firebase/auth";
 import Timeline from 'routes/Timeline';
-import Background from 'components/Background';
 
 
 function App() {
@@ -38,7 +37,7 @@ function App() {
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={<NavigationLayout />}>
-            <Route path="Home" element={<Home userObj={userObj}  /> } />
+            <Route path="Home" element={<Home userObj={userObj} />} />
             <Route index element={<Home userObj={userObj} />} />
             <Route path="Chats" element={<Chats userObj={userObj}/>} />
             <Route path="Timeline"element={<Timeline userObj={userObj} />} />
@@ -47,7 +46,6 @@ function App() {
             <Route path="Chatting" element={<Chatting userObj={userObj}/>} />
           </Route>
           <Route path="Profile" element={<Profile userObj={userObj}/>} />
-
         </Routes>
       </BrowserRouter>
     ) : (
@@ -63,7 +61,7 @@ function NavigationLayout() {
   return (
     <>
       {pathname !== '/Chatting' && <Navigation />}
-      <Background />
+
       <Outlet />
     </>
   );

@@ -1,0 +1,37 @@
+.authdiv{
+  width: 100vw;
+  height: 100vh;
+  background-color:#FEE500 ;
+  background: url('../images/loginvd.gif') no-repeat center center fixed;
+  background-size: cover;
+}
+.loginform{/*border: 1px solid red*/display: flex;text-align: center;position: relative;}
+#kakaologin{width: 100px;}
+.klogo{background: url(../images/kakaologo.png) no-repeat 0 0;
+width: 200px;height: 250px;;margin: 0 auto;display: block;animation: slideUp 0.5s ease-out;}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(50%);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+
+.container{display: block;margin: 0 auto;position: relative;width: 500px;margin-top: 150px;}
+
+#kakaopw{width: 60%;height: 10%;}
+#kakaoid{border-bottom: none;width: 60%;height: 10%;}
+#kakaologin{width: 62%;margin-top: 10px;width: 62%;height: 10%;}
+
+.signin{/*border: 1px solid blue;*/width: 100%;display: flex;justify-content: center;margin-top: 45px;}
+.signinbtn{/*border: 1px solid red;*/color: gray;margin-left: 260px;}
+
+.etclogin{width: 100%;/*border: 1px solid red*/;margin-top: 10px;display: flex;justify-content: center;}
+.Googlebtn{margin-right: 180px;border-radius: 50%;width: 40px;height: 40px ;display: block;font-size: 25px;background-color:#412e34;padding-top: 8px;border:none;color: #FEE500;}
+.Githubbtn{border-radius: 50%;width: 40px;height: 40px ;display: block;font-size: 25px;background-color:#412e34;padding-top: 8px;border:none;color: #FEE500;}
+

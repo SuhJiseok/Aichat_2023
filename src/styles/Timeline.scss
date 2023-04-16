@@ -1,0 +1,11 @@
+@import url(../styles/Common.scss);
+
+
+form.Timeline{position: fixed;bottom:70px;width: 100%;display: flex;align-items: center;justify-content: space-around;box-shadow: 0px -6px 11px 0px rgba(46,215,255,0.34);z-index: 10;}
+.Timetext{width: 90%;margin-left: 10px;height: 100px;border-radius: 15px;margin-top: 10px;margin-bottom: 10px;
+}
+.Feedsend{border: none;font-size: 35px;background-color: transparent;}
+.Feedsend>i{color:#6DF9FA;}
+.prvimg{border-radius: 0%;position: relative;min-width: 100px;min-height: 100px; max-width: 300px;max-height: 300px;object-fit: contain;}
+.preview{position: absolute;bottom: 125px;width: 100%;background-color: rgba(173, 173, 173, 0.5);display: flex;}
+.imgremove{font-size: 20px;height: 40px;margin-left: -10px}
