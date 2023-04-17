@@ -3,9 +3,9 @@ import '../styles/More.scss';
 
 import { FaPlane, FaWifi, FaMoon, FaBatteryFull, FaCog, FaSmile, FaPaintBrush, FaHandPeace, FaUserCircle, FaUtensils, FaHome, FaTv, FaPen, FaGraduationCap, FaBuilding, FaWonSign, FaVideo, FaUser, FaComment, FaSearch, FaEllipsisH, FaBluetoothB } from "react-icons/fa"
 import Header from '../components/Header';
+const defaultImageURL = "../images/bg_default.png";
 
-
-function More() {
+function More({userObj}) {
   return (
     <>
     <body>
@@ -15,9 +15,13 @@ function More() {
       <main>
         <section className="user_info">
           <h2 className="blind">사용자 정보</h2>
-          <span className="profile_img empty"></span>
+          <span className="profile_img empty"><img
+                className="profile_img"
+                src={userObj ? userObj.photoURL || defaultImageURL : defaultImageURL}
+                alt="Profile"
+              /></span>
           <span className="profile_info">
-            <span className="profile_name">My name</span>
+          <span className="profile_name">{userObj.displayName || "My name"}</span>
             <span className="profile_email">Userid@gmail.com</span>
           </span>
           <span className="chat_img"><a href="#"><i><FaComment/></i></a></span>

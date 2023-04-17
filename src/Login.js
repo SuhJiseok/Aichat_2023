@@ -9,7 +9,7 @@ function AppLogin({isLoggedIn, userObj}) {
 
 
   return (
-    <BrowserRouter>
+    <BrowserRouter  basename={process.env.PUBLIC_URL}>
     {isLoggedIn && (<Home/>) } 
     {/* &&: 앤드연산자 / isLoggedIn이 트루일때 Home 실행 */}
       <Routes>

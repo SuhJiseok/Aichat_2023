@@ -45,7 +45,6 @@ function Home({ userObj }) {
           <header><h2>My Profile</h2></header>
           <ul>
             <li>
-             
                 <a href="#">
                 <Link to="/profile">
                   <img

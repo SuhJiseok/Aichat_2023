@@ -5,9 +5,10 @@ import "../styles/Background.scss"
 function Background() {
   return (
     <section className='bgsection'>
-    <div class="color"></div>
-    <div class="color"></div>
-    <div class="color"></div>
+    <div class="bgcolor"></div>
+    <div class="bgcolor"></div>
+    <div class="bgcolor"></div>
+    <div class="bgcolor"></div>
     </section>
   )
 }

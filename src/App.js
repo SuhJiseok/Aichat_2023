@@ -43,7 +43,7 @@ function App() {
             <Route path="Chats" element={<Chats userObj={userObj}/>} />
             <Route path="Timeline"element={<Timeline userObj={userObj} />} />
             <Route path="Find" element={<Find />} />
-            <Route path="More" element={<More />} />
+            <Route path="More" element={<More userObj={userObj} />} />
             <Route path="Chatting" element={<Chatting userObj={userObj}/>} />
           </Route>
           <Route path="Profile" element={<Profile userObj={userObj}/>} />

@@ -9,6 +9,7 @@ function Navigation() {
 
   const location = useLocation();
   const [activeTab, setActiveTab] = useState('Home'); // 상태 추가
+  
   useEffect(() => {
     const currentPath = location.pathname;
     const pathName = currentPath.split('/')[1] || 'Home';

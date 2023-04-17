@@ -1,37 +1,106 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Chatting.scss';
-import { FaPlane, FaWifi, FaMoon, FaSmile,FaSearch, FaBars, FaPlus,FaMicrophone, FaBluetoothB, FaBatteryFull, FaAngleLeft } from "react-icons/fa";
-import { Link, useLocation } from 'react-router-dom';
+import { FaPlane, FaWifi, FaMoon, FaSearch, FaBars, FaPlus, FaBluetoothB,  FaAngleLeft } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 import axios from 'axios';
-import { collection, addDoc, getDocs, onSnapshot, query, orderBy } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc } from "firebase/firestore";
 import { db } from 'fbase';
+
+const deleteMessage = async (messageId) => {
+  const messageRef = doc(db, "chats", messageId);
+  await deleteDoc(messageRef);
+};
+
 
 function Chatting({userObj}) {
   const [messages, setMessages] = useState([]);
   const inputField = useRef(null);
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [colonVisible, setColonVisible] = useState(true);
+  const [attachment, setAttachment] = useState("");
+
+  //현재 날짜 표시
+  const [currentDate, setCurrentDate] = useState("");
+
+  useEffect(() => {
+    const now = new Date();
+    setCurrentDate(formatDate(now));
+  }, []);
+
+  const formatDate = (date) => {
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    
+    const day = days[date.getDay()];
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+    
+    return `${day}, ${month} ${date.getDate()}, ${year}`;
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+      setColonVisible((prevVisible) => !prevVisible);
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  const formatTime = (value) => {
+    return value.toString().padStart(2, '0');
+  };
+
+  const onFileChange = (e) => {
+    const {
+      target: { files },
+    } = e;
+    const theFile = files[0];
+  
+    const reader = new FileReader();
+    reader.onloadend = (finishedEvent) => {
+      const {
+        currentTarget: { result },
+      } = finishedEvent;
+      setAttachment(result);
+    };
+    reader.readAsDataURL(theFile);
+  };
+  
+
 
   const openai = axios.create({
     baseURL: 'https://api.openai.com/v1/engines/text-davinci-003/completions',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer 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',
+      // 'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
     },
   });
   const [visibleIndex, setVisibleIndex] = useState(-1);
+
   const handleClick = async () => {
     const userMessage = inputField.current.value;
     console.log("User message:", userMessage);
     inputField.current.value = "";
 
   
-    // 사용자 메시지 저장
-    await addDoc(collection(db, "chats"), {
+  // 사용자 메시지 객체 생성
+    const myMessage = {
       type: "my",
       text: userMessage,
       createdAt: Date.now(),
-      creatorId: userObj.uid
-    });
+      creatorId: userObj.uid,
+    };
+
+     // 이미지 첨부 여부 확인
+     if (attachment) {
+      myMessage.attachment = attachment;
+    }
+
+    await addDoc(collection(db, "chats"), myMessage);
   
     openai
       .post("", {
@@ -88,7 +157,9 @@ function Chatting({userObj}) {
           </div>
 
           <div className="center_item">
-          <span>15</span>:<span>33</span>
+          <span>{formatTime(currentTime.getHours())}</span>
+        {colonVisible ? ':' : ' '}
+        <span>{formatTime(currentTime.getMinutes())}</span>
           </div>
           <div className="right_item">
           <i><FaMoon/></i>
@@ -105,26 +176,55 @@ function Chatting({userObj}) {
       </header>
       <hr />
       <div className='Chattingmain'>
-  <span className="date_info">Thursday, March 23, 2023</span>
+      <span className="date_info">{currentDate}</span>
+
   {messages.map((message, index) => (
     <div key={index} className={`chat_box ${message.type} ${index * 2 >= visibleIndex ? 'elastic': ''}`}>
-      <div className="other_info">
-        <a href="#">
-          <span className="profile_img empty"></span>
-        </a>
-        <span className="profile_name"></span>
-      </div>
+      {message.type !== "my" && (
+        <div className="other_info">
+          <a href="#">
+            <span className="profile_img empty"></span>
+          </a>
+          <span className="profile_name"></span>
+        </div>
+      )}
       <span className="chat">{message.text}</span>
-      <span className="chat_time">
-        <span>15</span>:<span>33</span>
-      </span>
-    </div>
-  ))}
-</div>
+      {message.attachment && (
+      <div className="image-container">
+        <img className="message-image" src={message.attachment} alt="Message attachment" />
+      </div>
+    )}
+      {message.type === "my" && (
+      <button className="delete-btn" onClick={() => deleteMessage(message.id)}>
+        Delete
+      </button>
+      )}
+        <span className="chat_time">
+          <span>15</span>:<span>33</span>
+        </span>
+      </div>
+      ))}
+      </div>
+{attachment && (
+  <div className="chtpreview">
+    <img className='chtprvimg' src={attachment} alt="Attachment" />
+    <button className='chtimgremove' onClick={() => setAttachment("")}>Remove</button>
+  </div>
+)}
+
 
       <hr />
       <footer>
-        <span className="plus_btn"><a href="#"><i><FaPlus/></i></a></span>
+      <input
+          type="file"
+          accept="image/*"
+          id="fileInput"
+          style={{ display: "none" }}
+          onChange={onFileChange}
+        />
+          <span className="plus_btn" onClick={() => document.getElementById("fileInput").click()}>
+            <i><FaPlus /></i>
+          </span>
         <input className="chat-box" id="input" ref={inputField}></input>
         <button id="send" onClick={handleClick}>전송</button>
       </footer>
