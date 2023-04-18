@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import '../styles/Chats.scss';
 import {  FaComment, FaSearch,FaPlane, FaWifi, FaMoon, FaBluetoothB,FaBatteryFull, FaCog,} from "react-icons/fa"
 import Header from '../components/Header';
@@ -6,6 +6,13 @@ import infoData from '../routes/Info.json';
 import { Link } from 'react-router-dom';
 
 function Chats() {
+  const userRefs = infoData.map(()=> createRef());
+  const handleUserClick = (index) => {
+    const selectedUser = infoData[index];
+    console.log("Selected user:", selectedUser);
+  };
+
+
   return (
     <>
     <body>
@@ -24,8 +31,8 @@ function Chats() {
         <section className="main_section">
           <header className="blind"><h2>Friends</h2></header>
           <ul>
-          {infoData.map(user => (
-              <li key={user.id}>
+          {infoData.map((user, index) => (
+              <li key={user.id} ref={userRefs[index]} onClick={() => handleUserClick(index)}>
                  <Link to={{
                     pathname: '/Chatting',
                     state: { user }

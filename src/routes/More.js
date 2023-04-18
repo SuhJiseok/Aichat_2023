@@ -15,11 +15,8 @@ function More({userObj}) {
       <main>
         <section className="user_info">
           <h2 className="blind">사용자 정보</h2>
-          <span className="profile_img empty"><img
-                className="profile_img"
-                src={userObj ? userObj.photoURL || defaultImageURL : defaultImageURL}
-                alt="Profile"
-              /></span>
+          <span className="profile_img"  style={{
+            backgroundImage: `url(${userObj ? userObj.photoURL || defaultImageURL : defaultImageURL})`,    backgroundSize: 'cover',    backgroundPosition: 'center',    backgroundRepeat: 'no-repeat',  }}></span>
           <span className="profile_info">
           <span className="profile_name">{userObj.displayName || "My name"}</span>
             <span className="profile_email">Userid@gmail.com</span>

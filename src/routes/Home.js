@@ -5,26 +5,26 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import axios from 'axios';
 import Background from 'components/Background';
-
+import infoData from '../routes/Info.json';
 
 const defaultImageURL = "../images/bg_default.png";
 
 function Home({ userObj }) {
 
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-        setUsers(response.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+  //       setUsers(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   return (
     <>
@@ -67,23 +67,18 @@ function Home({ userObj }) {
         <section className="main_section">
           <header><h2>Friends</h2></header>
           <ul>
-            {users.map((user) => (
-              <>
-              <li key={user.id}>
-                <Link to={{pathname: '/Profile',
-                           state: { name: user.name },
-                          }}
-                  >
-                  <span className="profile_img empty"></span>
-                  <span className="profile_name">{user.name}</span>
-                  <span className="profile_messages">Have a good day, See you soon.</span>
-                </Link>
-              </li>
-              </>
+          {infoData.map((user) => (
+                <>
+                  <li key={user.id}>
+                    <Link to={{ pathname: '/FriendProfile', state: { name: user.name } }}>
+                      <span className="profile_img"><img src={user.images} alt={user.name}/></span>
+                      <span className="profile_name">{user.name}</span>
+                      <span className="profile_messages">Have a good day, See you soon.</span>
+                    </Link>
+                  </li>
+                </>
               ))}
-              
-          </ul>
-          
+            </ul>
         </section>
       </main>
       <hr />

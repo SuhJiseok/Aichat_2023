@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Chatting.scss';
 import { FaPlane, FaWifi, FaMoon, FaSearch, FaBars, FaPlus, FaBluetoothB,  FaAngleLeft } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import axios from 'axios';
 import { collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc } from "firebase/firestore";
@@ -13,12 +13,24 @@ const deleteMessage = async (messageId) => {
 };
 
 
-function Chatting({userObj}) {
+function Chatting({userObj, selectedUser}) {
+
+
   const [messages, setMessages] = useState([]);
   const inputField = useRef(null);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [colonVisible, setColonVisible] = useState(true);
   const [attachment, setAttachment] = useState("");
+
+
+
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   //현재 날짜 표시
   const [currentDate, setCurrentDate] = useState("");
@@ -76,7 +88,7 @@ function Chatting({userObj}) {
     baseURL: 'https://api.openai.com/v1/engines/text-davinci-003/completions',
     headers: {
       'Content-Type': 'application/json',
-      // 'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+      'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
     },
   });
   const [visibleIndex, setVisibleIndex] = useState(-1);
@@ -131,7 +143,7 @@ function Chatting({userObj}) {
 
   //컴포넌트 마운트 될 때 데이터베이스에서 채팅목록 불러오기
   useEffect(() => {
-    const q = query(collection(db, "chats"), orderBy("createdAt", "asc"));
+    const q = query(collection(db, `chats`), orderBy("createdAt", "asc"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const newArray = [];
       querySnapshot.forEach((doc) => {
@@ -169,13 +181,13 @@ function Chatting({userObj}) {
         </div>
 
         <div className="title_bar">
-          <h1>Friend Name </h1>
+          <h1>{selectedUser && selectedUser.name}</h1>
           <div className="left_item"><Link to="/chats"><i><FaAngleLeft/></i></Link></div>
           <div className="right_item"><a href="#"><i><FaSearch/></i><i><FaBars/></i></a></div>
         </div>
       </header>
       <hr />
-      <div className='Chattingmain'>
+      <div ref={scrollRef} className='Chattingmain'>
       <span className="date_info">{currentDate}</span>
 
   {messages.map((message, index) => (
