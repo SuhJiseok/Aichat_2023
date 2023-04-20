@@ -49,7 +49,7 @@ function App() {
             <Route path="Chatting" element={<Chatting userObj={userObj}/>} />
           </Route>
           <Route path="Profile" element={<Profile userObj={userObj}/>} />
-          <Route path="FriendProfile" element={<FriendProfile userObj={userObj}/>} />
+          <Route path="FriendProfile" element={<FriendProfile userObj={userObj} />} />
 
         </Routes>
       </BrowserRouter>

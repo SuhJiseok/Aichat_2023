@@ -70,7 +70,7 @@ function Home({ userObj }) {
           {infoData.map((user) => (
                 <>
                   <li key={user.id}>
-                    <Link to={{ pathname: '/FriendProfile', state: { name: user.name } }}>
+                    <Link to={'/FriendProfile'} state = {{ friendname: user.name, friendimage: user.images }} >
                       <span className="profile_img"><img src={user.images} alt={user.name}/></span>
                       <span className="profile_name">{user.name}</span>
                       <span className="profile_messages">Have a good day, See you soon.</span>

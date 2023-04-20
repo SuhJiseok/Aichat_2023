@@ -28,6 +28,7 @@ function Profile({userObj, onProfileUpdate}) {
   const [backgroundAttachment, setBackgroundAttachment] = useState("");
   const [backgroundImageUrl, setBackgroundImageUrl] = useState("");
  
+  
 
   // 변경 토글 
   const [showEdit, setShowEdit] = useState(false);

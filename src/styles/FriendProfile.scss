@@ -13,6 +13,7 @@ body > header {
 .title_bar > .left_itm > a {
   opacity: 1;
   font-size: 20px;
+  color: black;
 }
 
 main {
@@ -96,87 +97,7 @@ main {
   font-size: 20px;
 }
 
-.Logout{
-  cursor: pointer;
-  position: relative;
-  margin-top: 30px;
-  text-align: center;
-  padding: 5px 10px;
-  color: black;
-  font-size: 13px;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-family: sans-serif;
-  box-sizing: border-box;
-  background: linear-gradient(90deg, yellow, orange, red, violet, purple, blue, yellow);
-  background-size: 400%;
-  border-radius: 30px;
-  z-index: 1;
-  overflow: hidden;}
 
-  .Logout:hover {
-    animation: animate 8s linear infinite;
-    color: #fff;
-  }
-  @keyframes animate {
-    0% {
-      background-position: 0%;
-    }
-    100% {
-      background-position: 400%;
-    }
-  }
-  .Logout:before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    z-index: -1;
-   
-    background-size: 100%;
-    border-radius: 40px;
-    opacity: 0;
-    transition: 0.5%;
-  }
-  .Logout:hover:before {
-    filter: blur(20px);
-    opacity: 1;
-    animation: animate 8s linear infinite;
-  }
-.complete{border: 1px solid red;}
-.formInput{position: relative;margin-bottom: 10px;}
-.imgselect {
-  display: none;
-}
-
-.custom-file-upload {
-  display:block;
-  padding: 10px;
-  cursor: pointer;
-  background-color: #f1f1f1;
-  border: 1px solid #ccc;
-  border-radius: 50%;
-  font-size: 14px;
-  width: 5px;
-  height: 5px;
-  text-align: center;
-  position: relative;
-  left: 110px;
-  bottom: 130px;
-  z-index: 10;
-
-}
-.pfcontainer{position: absolute;bottom: 40px;}
-
-.custom-file-upload>svg{font-size: 12px;display: block;position: relative;right: 3px;bottom: 3px;}
-
-.formBtn{margin: 0 auto;display: block;}
-.attachment{position: absolute;bottom: 164px; transform: translateX(21px);}
-button.removeBtn{border: 1px solid blue;color: black;border: 1px solid black;border-radius: 50%;width: 20px;height: 20px;}
-.attachment>img{width: 100px;height: 100px;opacity: 0.75;}
 
 
 .bgimgupload{
@@ -211,6 +132,3 @@ button.removeBtn{border: 1px solid blue;color: black;border: 1px solid black;bor
     visibility: hidden;
   }
 }
-
-//페이지 나갈 시 애니메이션 적용
-
