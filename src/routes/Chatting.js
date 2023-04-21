@@ -15,7 +15,7 @@ const deleteMessage = async (messageId) => {
 
 function Chatting({userObj, selectedUser}) {
 
-
+  const {friendname, friendimage} = useLocation().state
   const [messages, setMessages] = useState([]);
   const inputField = useRef(null);
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -181,7 +181,7 @@ function Chatting({userObj, selectedUser}) {
         </div>
 
         <div className="title_bar">
-          <h1>{selectedUser && selectedUser.name}</h1>
+          <h1>{friendname}</h1>
           <div className="left_item"><Link to="/chats"><i><FaAngleLeft/></i></Link></div>
           <div className="right_item"><a href="#"><i><FaSearch/></i><i><FaBars/></i></a></div>
         </div>
@@ -195,7 +195,7 @@ function Chatting({userObj, selectedUser}) {
       {message.type !== "my" && (
         <div className="other_info">
           <a href="#">
-            <span className="profile_img empty"></span>
+            <span className="profile_img" style={{backgroundImage: `url(${friendimage})`}}></span>
           </a>
           <span className="profile_name"></span>
         </div>

@@ -11,20 +11,6 @@ const defaultImageURL = "../images/bg_default.png";
 
 function Home({ userObj }) {
 
-  // const [users, setUsers] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-  //       setUsers(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   return (
     <>

@@ -33,11 +33,7 @@ function Chats() {
           <ul>
           {infoData.map((user, index) => (
               <li key={user.id} ref={userRefs[index]} onClick={() => handleUserClick(index)}>
-                 <Link to={{
-                    pathname: '/Chatting',
-                    state: { user }
-                  }}
-                >
+                 <Link to={'/Chatting'} state={{friendname: user.name, friendimage: user.images}}  >
                   <span className="chatts_img"><img src={user.images} alt={user.name}/></span>
                   <span className="chats_cont">
                     <span className="chats_name">{user.name}</span>

@@ -57,7 +57,7 @@ return (
         <input type="mail" className="kprofile_email" placeholder="UserID@gmail.com" />
         <ul className="kprofile_menu">
           <li>
-            <Link to={'/Chatting'}>
+            <Link to={'/Chatting'} state={{friendname,friendimage}}>
             <a href="#">
               <span className="icon">
                 <i><FaComment/></i>
