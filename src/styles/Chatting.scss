@@ -145,10 +145,12 @@ body {
     background: #eee;
 
     .plus_btn {
-      a {
+      i{
         color: #b3b4b4;
         padding-left: 15px;
         font-size: 16px;
+        cursor: pointer;
+
       }
     }
 
@@ -169,7 +171,15 @@ body {
         }
       }
     }
-
+    .message-image {
+      min-width: 100px;
+      min-height: 100px;
+      max-width: 400px;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 0%;
+    }
+    
     .voice_btn {
       a {
         display: block;

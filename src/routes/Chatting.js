@@ -114,6 +114,9 @@ function Chatting({userObj, selectedUser}) {
 
     await addDoc(collection(db, "chats"), myMessage);
   
+  // 이미지 전송 후 미리보기 닫기
+  setAttachment("");
+
     openai
       .post("", {
         prompt: userMessage,
@@ -200,17 +203,18 @@ function Chatting({userObj, selectedUser}) {
           <span className="profile_name"></span>
         </div>
       )}
-      <span className="chat">{message.text}</span>
-      {message.attachment && (
-      <div className="image-container">
-        <img className="message-image" src={message.attachment} alt="Message attachment" />
-      </div>
-    )}
-      {message.type === "my" && (
+      <span className="chat">
+        {message.text}
+        {message.attachment && (
+          <img className="message-image" src={message.attachment} alt="Message attachment" />
+        )}
+      </span>
+     
+      {/* {message.type === "my" && ( */}
       <button className="delete-btn" onClick={() => deleteMessage(message.id)}>
         Delete
       </button>
-      )}
+      {/* )} */}
         <span className="chat_time">
           <span>15</span>:<span>33</span>
         </span>
