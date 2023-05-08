@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/Aichat_2023/static/css/main.f745f4ec.css",
-    "main.js": "/Aichat_2023/static/js/main.d7c48f53.js",
+    "main.css": "/Aichat_2023/static/css/main.4eea20cb.css",
+    "main.js": "/Aichat_2023/static/js/main.879342af.js",
     "static/js/787.348c94bc.chunk.js": "/Aichat_2023/static/js/787.348c94bc.chunk.js",
     "static/media/kakaofriends.png": "/Aichat_2023/static/media/kakaofriends.84375bb9f89d79ccd760.png",
     "static/media/path.png": "/Aichat_2023/static/media/path.7d00edf73f07bdcecc6d.png",
     "static/media/kakaostory.png": "/Aichat_2023/static/media/kakaostory.572f3ce5bf10fbdaac9d.png",
     "static/media/bg_default.png": "/Aichat_2023/static/media/bg_default.82687b4e75ad8b89fa96.png",
     "index.html": "/Aichat_2023/index.html",
-    "main.f745f4ec.css.map": "/Aichat_2023/static/css/main.f745f4ec.css.map",
-    "main.d7c48f53.js.map": "/Aichat_2023/static/js/main.d7c48f53.js.map",
+    "main.4eea20cb.css.map": "/Aichat_2023/static/css/main.4eea20cb.css.map",
+    "main.879342af.js.map": "/Aichat_2023/static/js/main.879342af.js.map",
     "787.348c94bc.chunk.js.map": "/Aichat_2023/static/js/787.348c94bc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f745f4ec.css",
-    "static/js/main.d7c48f53.js"
+    "static/css/main.4eea20cb.css",
+    "static/js/main.879342af.js"
   ]
 }
