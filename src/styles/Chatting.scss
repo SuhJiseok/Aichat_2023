@@ -8,10 +8,17 @@
 
   }
 .Chattingheader>.title_bar{
-  background-color: #a1c0d5;
+  background-color: #343541;
+}
+.Chattingheader>.title_bar>h1{
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px;
+  color: #ccc;
 }
 .Chattingheader>.status_bar{
-  background-color: #a1c0d5;
+  background-color: #343541;
+  color: #ccc;
 }
 
 .Chattingheader>.title_bar {
@@ -20,7 +27,7 @@
       color: #000;
       opacity: 1;
       font-size: 24px;
-      background-color: #a1c0d5;
+      background-color: #343541;
     }
   }
 }
@@ -44,7 +51,7 @@
   margin-top:46px;
   height: calc(100% - 90px);
   padding-top: 10px;
-  background: #a1c0d5;
+  background: #343541;
   overflow-y: auto;
 
 
@@ -53,6 +60,7 @@
     opacity: 0.5;
     text-align: center;
     margin: 10px;
+    color: #ccc;
   }
 
 
@@ -193,7 +201,7 @@ body {
         font-size: 16px;
       }
     }
-    #send{background: #ffe73a;}
+    #send{background: #40414f;}
   
 
 
